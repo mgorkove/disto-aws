@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Grant read-only access to a specific AWS account
+Description: Grant read-only access to Disto's AWS account
 
 Resources:
   ReadOnlyCrossAccountRole:
