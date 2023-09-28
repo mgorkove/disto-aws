@@ -1,24 +1,24 @@
-AWSTemplateFormatVersion: '2010-09-09'
-Description: Grant read-only access to Disto's AWS account
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Grant Disto read-only access to your AWS account
 
 Resources:
   ReadOnlyCrossAccountRole:
-    Type: 'AWS::IAM::Role'
+    Type: "AWS::IAM::Role"
     Properties:
-      RoleName: 'ReadOnlyCrossAccountAccess'
+      RoleName: "ReadOnlyCrossAccountAccess"
       AssumeRolePolicyDocument:
-        Version: '2012-10-17'
+        Version: "2012-10-17"
         Statement:
           - Effect: Allow
             Principal:
               AWS:
-                - 'arn:aws:iam::138001055538:root'
+                - "arn:aws:iam::138001055538:user/DistoUser"
             Action:
-              - 'sts:AssumeRole'
+              - "sts:AssumeRole"
       ManagedPolicyArns:
-        - 'arn:aws:iam::aws:policy/ReadOnlyAccess'
+        - "arn:aws:iam::aws:policy/ReadOnlyAccess"
 
 Outputs:
   RoleArn:
-    Description: 'ARN of the ReadOnly IAM Role'
+    Description: "ARN of the ReadOnly IAM Role"
     Value: !GetAtt ReadOnlyCrossAccountRole.Arn
